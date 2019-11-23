@@ -31,3 +31,10 @@ python3 OneList.py
     "RedirectUri": "http://localhost/onedrive-login"
 }
 ```
+
+## 运行
+```
+python3 app.py
+
+# 默认监听 127.0.0.1:5288 , 可自行在 app.py 中更改.
+```
