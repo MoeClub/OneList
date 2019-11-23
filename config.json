@@ -1,8 +1,0 @@
-{
-    "RootPath": "/Document",
-    "SubPath": "/onedrive",
-    "FolderRefresh": 900,
-    "FileRefresh": 1200,
-    "RefreshToken": "",
-    "RedirectUri": "http://localhost/onedrive-login"
-}
