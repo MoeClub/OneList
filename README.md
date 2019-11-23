@@ -14,6 +14,20 @@ python3 OneList.py
 
 ## 自定义配置文件
 ```
-config.json
+# config.json
 
+{
+    // OneDrive 中的某个需要列出的目录
+    "RootPath": "/Document",
+    // 网址中的子路径
+    "SubPath": "/onedrive",
+    // 目录刷新时间
+    "FolderRefresh": 900,
+    // 下载链接刷新时间
+    "FileRefresh": 1200,
+    // 认证令牌, 将会自动更新, 保持默认
+    "RefreshToken": "",
+    // 这个不用管, 保持默认
+    "RedirectUri": "http://localhost/onedrive-login"
+}
 ```
