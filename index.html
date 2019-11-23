@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OneList</title>
+        <style>
+      body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1em;
+        background-color: #f7f7f9;
+        color: #000000;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 2rem;
+        letter-spacing: 2px;
+        margin-bottom: 3.5rem;
+      }
+      h1 a {
+        color: #333;
+        text-decoration: none;
+      }
+      .list-wrapper {
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        margin-bottom: 40px;
+        box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.1);
+      }
+      .list-container {
+        position: relative;
+        overflow: hidden;
+      }
+      .list-container .list-header-container {
+        position: relative;
+      }
+      .list-container .list-header-container a.back-link {
+        color: #000000;
+        display: inline-block;
+        position: absolute;
+        font-size: 16px;
+        padding: 30px 20px;
+        vertical-align: middle;
+        text-decoration: none;
+      }
+      body
+        .list-wrapper
+        .list-container
+        .list-header-container
+        a.back-link:hover {
+        color: #2eb5ef;
+      }
+      .list-container .list-header-container h3 {
+        margin: 0;
+        border: 0 none;
+        padding: 30px 20px;
+        text-align: center;
+        font-weight: 400;
+        color: #000000;
+        background-color: #f7f7f9;
+      }
+      .list-container .list-header-container h3 a {
+        cursor: pointer;
+      }
+      .list-container .list-header-container h3 a:hover {
+        color: #2eb5ef;
+      }
+      .list-body-container {
+        position: relative;
+        left: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-sizing: border-box;
+        background: white;
+      }
+      .list-body-container .list-table {
+        width: 100%;
+        padding: 20px;
+        border-spacing: 0;
+      }
+      .list-body-container .list-table tr {
+        height: 40px;
+        cursor: pointer;
+      }
+      .list-body-container .list-table tr:hover {
+        background: #f1f1f1;
+      }
+      .list-body-container .list-table tr:first-child {
+        background: white;
+      }
+      .list-body-container .list-table th,
+      .list-body-container .list-table td {
+        padding: 0 10px;
+        text-align: left;
+      }
+      .list-body-container .list-table .updated_at,
+      .list-body-container .list-table .size {
+        text-align: right;
+      }
+      .list-body-container .list-table .file ion-icon {
+        font-size: 15px;
+        margin-right: 5px;
+        vertical-align: bottom;
+      }
+    </style>
+</head>
+<body>
+    <h1>
+      <a href="{{ escape(rootPath) }}">OneList</a>
+    </h1>
+
+    <div class="list-wrapper">
+      <div class="list-container">
+        <div class="list-header-container">
+            <a href='{{ escape(rootPath) }}' class="back-link"><ion-icon name="home"></ion-icon></a>
+            <h3>{{ escape("/" + str(currentPath).replace(rootPath, "", 1).strip("/").strip()) }}</h3>
+        </div>
+        <div class="list-body-container">
+          <table class="list-table">
+            <tr>
+              <th class="file">文件</th>
+              <th class="updated_at">修改时间</th>
+              <th class="size">大小</th>
+            </tr>
+            {% for item in items %}
+              {% if not str(item).startswith("@") %}
+                <tr>
+                    <td class="file">
+                        {% if items[item]["@type"] == "file" %}
+                        <ion-icon name="document"></ion-icon>
+                        {% else %}
+                        <ion-icon name="folder"></ion-icon>
+                        {% end %}
+                        <a href='{{ escape(currentPath) }}/{{ escape(item) }}'>{{ escape(items[item]["name"]) }}</a>
+                    </td>
+                    <td class="updated_at">{{ items[item]["date"] }}</td>
+                    <td class="size">{{ items[item]["size"] }}</td>
+                </tr>
+              {% end %}
+              {% end %}
+          </table>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+</html>
