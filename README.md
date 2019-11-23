@@ -1,5 +1,5 @@
 # 开始使用
-## 通过下面URL登录
+## 通过下面URL登录 (右键新标签打开)
 [https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=ea2b36f6-b8ad-40be-bc0f-e5e4a4a7d4fa&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=ea2b36f6-b8ad-40be-bc0f-e5e4a4a7d4fa&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All)
 
 ## 初始化配置文件
@@ -35,7 +35,7 @@ python3 OneList.py
 ```
 python3 app.py
 
-# 默认监听 127.0.0.1:5288 , 可自行在 app.py 中更改.
+# 默认监听 127.0.0.1:5288 , 可在 app.py 中自行更改.
 ```
 
 ## 展示
