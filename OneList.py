@@ -233,7 +233,6 @@ class OneDrive:
         if path is None:
             path = self.RootPath
         url = str("https://graph.microsoft.com/v1.0/me/drive/root{}?expand=children($select=name,size,file,folder,parentReference,lastModifiedDateTime)").format(parse.quote(self.drivePath(path)))
-        print(url)
         print("Cache:", self.urlPath(path))
         page = Utils.http(url, headers=self.getHeader(self.access_token))
         data = json.loads(page.read().decode())
