@@ -32,6 +32,10 @@ Usage of OneDriveUploader:
   -c string
         // 配置文件路径
         Config file. (default "auth.json")
+  -f    Force Read config form config file. [BlockSize, ThreadNum]
+        // 开关
+        // 加上 -f 参数，强制读取 auth.json 中的块大小配置和多线程配置.
+        // 不加 -f 参数, 则每次刷新当前配置存到 auth.json 配置文件中.
   -n string
         // 上传单个文件时,在网盘中重命名
         Rename file on upload to remote.
@@ -39,7 +43,7 @@ Usage of OneDriveUploader:
         // 上传到网盘中的某个目录, 默认: 根目录
         Upload to reomte path.
   -s string
-        // 要上传的文件或文件夹
+        // *必要参数, 要上传的文件或文件夹
         Upload item.
   -t string
         // 线程数, 同时上传文件的个数. 默认: 2
