@@ -73,3 +73,6 @@ OneDriveUploader -t 10 -s "Download" -r "Test"
 OneDriveUploader -t 15 -b 20 -s "Download" -r "Test"
 ```
 
+## 注意
+- 多次尝试后, 无失败的上传文件. 退出码为 0 .
+- 最终还有失败的上传文件会详细列出上传失败项. 退出码为 1.
