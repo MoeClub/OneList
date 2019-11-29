@@ -1,9 +1,9 @@
 # OneDriveUploader
 - 支持上传文件和文件夹到指定目录,并保持上传前的目录结构.
 - 支持命令参数使用, 方便外部程序调用.
-- 支持分块上传，拥有足够多的重试次数.
-# TODO:
-- 多线程上传.
+- 支持自定义上传分块大小.
+- 支持多线程上传(多文件同时上传).
+- 支持根据文件大小动态调整重试次数
 
 ## 授权
 ### 通过下面URL登录 (右键新标签打开)
@@ -12,27 +12,37 @@
 ### 初始化配置文件
 ```
 # 运行
-OneDriveUploader -a "code"
+OneDriveUploader -a "url"
 
-# 在浏览器地址栏中获取 code 字段内容
-# 将获取的内容替换命令中的 code 四个字母
+# 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
+# 将获取的完整url内容替换命令中的 url 三个字母
 # 此操作将会自动初始化的配置文件,只需要操作一次
 ```
 
 ## 使用
 ```
-OneDriveUploader.exe -help
-Usage of OneDriveUploader.exe:
+Usage of OneDriveUploader:
   -a string
-        Setup auth.json.
+        // 初始化授权
+        Setup and Init auth.json.
+  -b string
+        // 自定义上传分块大小, 可以提高网络吞吐量, 受限于磁盘性能和网络速度.
+        Set block size. [Unit: M; 5<=b<=60;] (default "10")
   -c string
+        // 配置文件路径
         Config file. (default "auth.json")
   -n string
+        // 上传单个文件时,在网盘中重命名
         Rename file on upload to remote.
   -r string
+        // 上传到网盘中的某个目录, 默认: 根目录
         Upload to reomte path.
   -s string
+        // 要上传的文件或文件夹
         Upload item.
+  -t string
+        // 线程数, 同时上传文件的个数. 默认: 2
+        Set thread num. (default "2")
         
 ```
 
@@ -40,15 +50,21 @@ Usage of OneDriveUploader.exe:
 ```
 # 一些示例:
 # 将同目录下的 mm00.jpg 文件上传到 OneDrive 网盘根目录
-OneDriveUploader.exe -s "mm00.jpg"
+OneDriveUploader -s "mm00.jpg"
 
 # 将同目录下的 mm00.jpg 文件上传到 OneDrive 网盘根目录,并改名为 mm01.jpg
-OneDriveUploader.exe -s "mm00.jpg" -n "mm01.jpg"
+OneDriveUploader -s "mm00.jpg" -n "mm01.jpg"
 
 # 将同目录下的 Download 文件夹上传到 OneDrive 网盘根目录
-OneDriveUploader.exe -s "Download" 
+OneDriveUploader -s "Download" 
 
 # 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中
-OneDriveUploader.exe -s "Download" -r "Test"
+OneDriveUploader -s "Download" -r "Test"
+
+# 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用 10 线程
+OneDriveUploader -t 10 -s "Download" -r "Test"
+
+# 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用 15 线程, 并设置分块大小为 20M
+OneDriveUploader -t 15 -b 20 -s "Download" -r "Test"
 ```
 
