@@ -324,6 +324,8 @@ class OneDrive:
             return
         tmpCache = copy.deepcopy(self.cacheUrl)
         for parentItem in tmpCache:
+            if not tmpCache[parentItem]:
+                del self.cacheUrl[parentItem]
             for Item in tmpCache[parentItem]:
                 try:
                     if Utils.getTime(tmpCache[parentItem][Item]['@time']) >= self.FileRefresh:
