@@ -6,6 +6,7 @@ from urllib import request, error, parse
 from threading import Thread
 import json
 import time
+import copy
 import os
 
 
@@ -292,7 +293,7 @@ class OneDrive:
             if NotInCache and not isFolder:
                 self.listItem(path)
         else:
-            if NotInCache or Utils.getTime(cache['@time']) > timeOut:
+            if NotInCache or Utils.getTime(cache['@time']) >= timeOut:
                 self.listItem(path)
         return isFolder
 
@@ -321,11 +322,11 @@ class OneDrive:
     def checkFile(self):
         if not self.cacheUrl:
             return
-        tmpCache = self.cacheUrl.copy()
+        tmpCache = copy.deepcopy(self.cacheUrl)
         for parentItem in tmpCache:
             for Item in tmpCache[parentItem]:
                 try:
-                    if Utils.getTime(tmpCache[parentItem][Item]['@time']) > self.FileRefresh:
+                    if Utils.getTime(tmpCache[parentItem][Item]['@time']) >= self.FileRefresh:
                         del self.cacheUrl[parentItem][Item]
                 except:
                     continue
