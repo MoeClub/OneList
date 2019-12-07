@@ -71,6 +71,9 @@ OneDriveUploader -t 10 -s "Download" -r "Test"
 
 # 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用 15 线程, 并设置分块大小为 20M
 OneDriveUploader -t 15 -b 20 -s "Download" -r "Test"
+
+# 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用配置文件中的线程参数和分块大小参数
+OneDriveUploader -f -c "/urs/local/auth.json" -s "Download" -r "Test"
 ```
 
 ## 注意
