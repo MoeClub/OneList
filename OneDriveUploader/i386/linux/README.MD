@@ -1,2 +1,2 @@
 # OneDriveUploader
-## i386
+## Linux i386
