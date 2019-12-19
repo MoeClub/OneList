@@ -7,12 +7,20 @@
 
 ## 授权
 ### 通过下面URL登录 (右键新标签打开)
-[https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=ea2b36f6-b8ad-40be-bc0f-e5e4a4a7d4fa&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=ea2b36f6-b8ad-40be-bc0f-e5e4a4a7d4fa&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All)
+#### 国际版, 个人版(家庭版)
+[https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=78d4dc35-7e46-42c6-9023-2d39314433a5&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=78d4dc35-7e46-42c6-9023-2d39314433a5&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All)
+#### 中国版(世纪互联)
+[https://login.chinacloudapi.cn/common/oauth2/v2.0/authorize?client_id=dfe36e60-6133-48cf-869f-4d15b8354769&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All](https://login.chinacloudapi.cn/common/oauth2/v2.0/authorize?client_id=dfe36e60-6133-48cf-869f-4d15b8354769&response_type=code&redirect_uri=http://localhost/onedrive-login&response_mode=query&scope=offline_access%20User.Read%20Files.ReadWrite.All)
 
 ### 初始化配置文件
 ```
 # 运行
+## 国际版
 OneDriveUploader -a "url"
+## 个人版(家庭版)
+OneDriveUploader -ms -a "url"
+## 中国版(世纪互联)
+OneDriveUploader -cn -a "url"
 
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
 # 将获取的完整url内容替换命令中的 url 三个字母
@@ -48,7 +56,12 @@ Usage of OneDriveUploader:
   -t string
         // 线程数, 同时上传文件的个数. 默认: 2
         Set thread num. (default "2")
-        
+  -cn string
+        // 授权中国版(世纪互联), 需要此参数.
+        OneDrive by 21Vianet.
+  -ms string
+        // 授权个人版(家庭版), 需要此参数.
+        OneDrive by Microsoft.
 ```
 
 ## 示例
