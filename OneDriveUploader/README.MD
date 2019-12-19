@@ -1,4 +1,5 @@
 # OneDriveUploader
+- 支持 国际版, 个人版(家庭版), 中国版(世纪互联).
 - 支持上传文件和文件夹到指定目录,并保持上传前的目录结构.
 - 支持命令参数使用, 方便外部程序调用.
 - 支持自定义上传分块大小.
@@ -14,12 +15,11 @@
 
 ### 初始化配置文件
 ```
-# 运行
-## 国际版
+# 国际版
 OneDriveUploader -a "url"
-## 个人版(家庭版)
+# 个人版(家庭版)
 OneDriveUploader -ms -a "url"
-## 中国版(世纪互联)
+# 中国版(世纪互联)
 OneDriveUploader -cn -a "url"
 
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
