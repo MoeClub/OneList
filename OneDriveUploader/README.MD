@@ -5,6 +5,7 @@
 - 支持自定义上传分块大小.
 - 支持多线程上传(多文件同时上传).
 - 支持根据文件大小动态调整重试次数
+- 支持跳过网盘中已存在的同名文件.
 
 ## 授权
 ### 通过下面URL登录 (右键新标签打开)
@@ -57,6 +58,10 @@ Usage of OneDriveUploader:
         // 加上 -f 参数，强制读取 auth.json 中的块大小配置和多线程配置.
         // 不加 -f 参数, 每次覆盖保存当前使用参数到 auth.json 配置文件中.
         Force Read config form config file. [BlockSize, ThreadNum]
+  -skip
+        // 开关
+        // 跳过上传网盘中已存在的同名文件.
+        Skip exist file on remote.
   -cn
         // 开关
         // 授权中国版(世纪互联), 需要此参数.
@@ -90,6 +95,9 @@ OneDriveUploader -t 15 -b 20 -s "Download" -r "Test"
 
 # 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用配置文件中的线程参数和分块大小参数
 OneDriveUploader -f -c "/urs/local/auth.json" -s "Download" -r "Test"
+
+# 将同目录下的 Download 文件夹上传到 OneDrive 网盘Test目录中, 使用配置文件中的线程参数和分块大小参数，并跳过上传网盘中已存在的同名文件
+OneDriveUploader -f -c "/urs/local/auth.json" -skip -s "Download" -r "Test"
 ```
 
 ## 注意
