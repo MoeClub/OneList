@@ -59,7 +59,7 @@ Usage of OneDriveUploader:
         // 不加 -f 参数, 每次覆盖保存当前使用参数到 auth.json 配置文件中.
         Force Read config form config file. [BlockSize, ThreadNum]
   -skip
-        // 开关
+        // 开关(默认不跳过)
         // 跳过上传网盘中已存在的同名文件.
         Skip exist file on remote.
   -cn
