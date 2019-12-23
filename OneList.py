@@ -150,8 +150,8 @@ class OneDrive:
     @staticmethod
     def accessData(grantType, redirectUri='http://localhost/onedrive-login'):
         return {
-            'client_id': 'ea2b36f6-b8ad-40be-bc0f-e5e4a4a7d4fa',
-            'client_secret': 'h27zG8pr8BNsLU0JbBh5AOznNS5Of5Y540l/koc7048=',
+            'client_id': '78d4dc35-7e46-42c6-9023-2d39314433a5',
+            'client_secret': 'ZudGl-p.m=LMmr3VrKgAyOf-WevB3p50',
             'redirect_uri': redirectUri,
             'grant_type': grantType,
             "scope": "User.Read Files.ReadWrite.All"
@@ -175,7 +175,11 @@ class OneDrive:
             setRoot = "/drive/root:/"
         else:
             setRoot = "/"
-        return str("{}{}").format(setRoot, newPath)
+        iPath = str("{}{}").format(setRoot, newPath)
+        if iPath != "/":
+            return iPath.rstrip("/")
+        else:
+            return "/"
 
     def findCache(self, path, useCache=0):
         path = self.urlPath(path, hasRoot=True)

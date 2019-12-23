@@ -2,8 +2,8 @@
 # -*- encoding: utf-8 -*-
 # Author:  MoeClub.org
 
-import os
 import json
+import base64
 import tornado.web
 import tornado.gen
 import tornado.ioloop
@@ -35,9 +35,15 @@ class Handler(tornado.web.RequestHandler):
         Path = str(Path).strip("/").strip()
         Root = str(MS.RootPath).strip("/").strip()
         Sub = str(MS.SubPath).strip("/").strip()
-        if str(Path).find(Sub) == 0:
-            Path = str(Path).replace(Sub, "", 1).strip("/").strip()
-        return str("/{}/{}").format(Root, Path)
+        if Root == "":
+            if Path == "":
+                return str("/").format(Root)
+            else:
+                return str("/{}").format(Path)
+        else:
+            if str(Path).find(Sub) == 0:
+                Path = str(Path).replace(Sub, "", 1).strip("/").strip()
+            return str("/{}/{}").format(Root, Path)
 
     def currentPath(self, Path):
         Path = str(Path).strip("/").strip()
@@ -53,6 +59,7 @@ class Handler(tornado.web.RequestHandler):
             if "@link" in items:
                 self.redirect(items["@link"], permanent=False)
             else:
+                items = base64.b64encode(json.dumps(items).encode('utf-8')).decode('utf-8')
                 self.render("index.html", currentPath=self.currentPath(Path), rootPath=self.currentPath(MS.SubPath), items=items)
         except Exception as e:
             print(e)
