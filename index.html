@@ -118,8 +118,8 @@
           <table class="list-table">
               <tr class="list-title">
                 <th onclick="View('name');">文件</th>
-                <th onclick="View('date');">修改时间</th>
-                <th>大小</th>
+                <th onclick="View('date');">时间</th>
+                <th onclick="View('size');">大小</th>
               </tr>
           </table>
         </div>
@@ -145,11 +145,37 @@
         }
     }
     function Goto(thePath) {window.location.href = thePath;}
+    function SizeNum(Size) {
+        var dataArray = Size.split(" ", 2);
+        var dataNum = 0;
+        if (dataArray[1] === "B"){
+            dataNum = 2 ** 0 * dataArray[0];
+        } else if (dataArray[1] === "KB"){
+            dataNum = 2 ** 10 * dataArray[0];
+        } else if (dataArray[1] === "MB"){
+            dataNum = 2 ** 20 * dataArray[0];
+        } else if (dataArray[1] === "GB"){
+            dataNum = 2 ** 30 * dataArray[0];
+        } else if (dataArray[1] === "TB"){
+            dataNum = 2 ** 40 * dataArray[0];
+        } else if (dataArray[1] === "PB"){
+            dataNum = 2 ** 50 * dataArray[0];
+        }
+        return dataNum;
+    }
     function compare(property) {
-        return function(a,b){
-            var value0 = a[property].toLowerCase();
-            var value1 = b[property].toLowerCase();
-            return value0.localeCompare(value1);
+        if (property === "size") {
+            return function(a,b){
+                var value0 = SizeNum(a[property].toUpperCase());
+                var value1 = SizeNum(b[property].toUpperCase());
+                return value0 - value1;
+            }
+        } else {
+            return function(a,b){
+                var value0 = a[property].toLowerCase();
+                var value1 = b[property].toLowerCase();
+                return value0.localeCompare(value1);
+            }
         }
     }
     function Clear() {
@@ -187,7 +213,7 @@
         return ElemBack.childNodes[0].href
     }
     function View(Property) {
-        console.log("sort:", Property, "reverse:", Reverse);
+        //console.log("sort:", Property, "reverse:", Reverse);
         ArrayFloder.sort(compare(Property));
         ArrayFile.sort(compare(Property));
         if (Reverse) {
