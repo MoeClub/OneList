@@ -37,9 +37,9 @@ OneDriveUploader -cn -a "url" -s "/onedrive03"
     "MainLand": false,
     // 授权令牌
     "RefreshToken": "1234564567890ABCDEF",
-    // 单配置文件中,此项要唯一.将此OneDrive目录映射在 "/onedrive" 下. (支持根目录"/")
+    // 单配置文件中,此项要唯一.将此OneDrive目录映射在 "/onedrive" 下. (支持根目录"/", 只推荐一个盘位的时候使用"/".)
     "SubPath": "/onedrive",
-    // 读取OneDrive的某个目录作为根目录. (暂不支持根目录"/")
+    // 读取OneDrive的某个目录作为根目录. (支持根目录"/")
     "RootPath": "/Test",
     // 缓存刷新间隔.(所有项目中的刷新时间取最小值为有效刷新间隔)
     "RefreshInterval": 900
