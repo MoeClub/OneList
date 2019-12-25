@@ -105,26 +105,26 @@
     </style>
 </head>
 <body>
-    <h1>
-      <span onclick="Goto(RootPath);">OneList</span>
-    </h1>
-    <div class="list-wrapper">
-      <div class="list-container">
+<h1>
+    <span onclick="Goto(RootPath);">OneList</span>
+</h1>
+<div class="list-wrapper">
+    <div class="list-container">
         <div class="list-header-container">
             <h3>OneList Local Path</h3>
             <span id="back" class="icon-arrow-left2" onclick="Goto(Back());"></span>
         </div>
         <div class="list-body-container">
-          <table class="list-table">
-              <tr class="list-title">
-                <th onclick="View('name');">文件</th>
-                <th onclick="View('date');">修改时间</th>
-                <th>大小</th>
-              </tr>
-          </table>
+            <table class="list-table">
+                <tr class="list-title">
+                    <th onclick="View('name');">文件</th>
+                    <th onclick="View('date');">时间</th>
+                    <th onclick="View('size');">大小</th>
+                </tr>
+            </table>
         </div>
-      </div>
     </div>
+</div>
 </body>
 <script>
     var RootPath = "{{.RootPath}}";
