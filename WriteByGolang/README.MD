@@ -80,8 +80,10 @@ Usage of OneList.exe:
 
 ## 运行
 ```
-# 保证配置文件 和index.html 同目录, 直接运行.
+# 保证 config.json 和 index.html 同目录, 直接运行.
 $ OneList
+# 监听公网 80 端口
+$ OneList -bind 0.0.0.0 -port 80
 ```
 
 ## 注意
