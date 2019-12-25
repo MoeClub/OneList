@@ -213,7 +213,6 @@
         return ElemBack.childNodes[0].href
     }
     function View(Property) {
-        //console.log("sort:", Property, "reverse:", Reverse);
         ArrayFloder.sort(compare(Property));
         ArrayFile.sort(compare(Property));
         if (Reverse) {
@@ -233,7 +232,8 @@
                 iconHtml = '<span class="icon-file-text2"> </span>';
             } else { continue }
             newChild.setAttribute('class', 'item');
-            newChild.innerHTML = "<th class=\"list-data\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ArrayItem[item]['name'] +"'>" + ArrayItem[item]['name'] + "</a></th><th class=\"list-data\">" + ArrayItem[item]['date'] + "</th><th class=\"list-data\">" + ArrayItem[item]['size'] + "</th>";
+            var ItemName = decodeURIComponent(ArrayItem[item]['name']);
+            newChild.innerHTML = "<th class=\"list-data\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ItemName +"'>" + ItemName + "</a></th><th class=\"list-data\">" + ArrayItem[item]['date'] + "</th><th class=\"list-data\">" + ArrayItem[item]['size'] + "</th>";
             Elem.lastChild.appendChild(newChild);
         }
     }
