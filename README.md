@@ -1,11 +1,5 @@
 # 开始使用 (测试版,更新中...)
 ## Bug 较多, 推荐使用 [WriteByGolang](https://github.com/MoeClub/OneList/tree/master/WriteByGolang) 版本
-## 已知问题
-- 文件夹内超过200个文件问题
-- 刷新缓存时卡顿
-## 已有特征
-- 单html,无第三方引用
-- 按文件日期排序/倒序
 
 ## 所需依赖
 ```
