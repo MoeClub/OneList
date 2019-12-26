@@ -1,5 +1,5 @@
 # 开始使用 (测试版,更新中...)
-## Bug 较多, 推荐使用 [WriteByGolang](https://github.com/MoeClub/OneList/tree/master/WriteByGolang) 版本
+## Bug 较多, 推荐使用 [Written in GoLang](https://github.com/MoeClub/OneList/tree/master/WriteByGolang) 版本
 
 ## 所需依赖
 ```
