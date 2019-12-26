@@ -25,7 +25,8 @@ OneDriveUploader -cn -a "url"
 
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
 # 将获取的完整url内容替换命令中的 url 三个字母
-# 此操作将会自动初始化的配置文件,只需要操作一次
+# 每次产生的 url 只能用一次, 重试请重新获取 url
+# 此操作将会自动初始化的配置文件
 # 提示 Init config file: '/path/to/auth.json' 则成功
 ```
 
