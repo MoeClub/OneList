@@ -1,5 +1,6 @@
 # 开始使用 (测试版,更新中...)
-## Python3版本Bug较多,性能不够. 推荐使用 [Written in GoLang](https://github.com/MoeClub/OneList/tree/master/WriteByGolang) 版本
+## Python3版本Bug较多,性能不够. 推荐使用 [Written in GoLang]
+## (https://github.com/MoeClub/OneList/tree/master/WriteByGolang) 版本
 
 ## 所需依赖
 ```
