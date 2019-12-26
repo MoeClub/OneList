@@ -16,11 +16,11 @@
 ## 添加配置文件
 ```
 # 国际版
-OneDriveUploader -a "url" -s "/onedrive01"
+OneList -a "url" -s "/onedrive01"
 # 个人版(家庭版)
-OneDriveUploader -ms -a "url" -s "/onedrive02"
+OneList -ms -a "url" -s "/onedrive02"
 # 中国版(世纪互联)
-OneDriveUploader -cn -a "url" -s "/onedrive03"
+OneList -cn -a "url" -s "/onedrive03"
 
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
 # 将获取的完整url内容替换命令中的 url 三个字母
@@ -50,7 +50,7 @@ OneDriveUploader -cn -a "url" -s "/onedrive03"
 
 ## 使用
 ```
-Usage of OneList.exe:
+Usage of OneList:
   -a string
         // 初始化配置文件,添加新配置
         Setup and Init auth.json.
