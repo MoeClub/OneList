@@ -24,7 +24,8 @@ OneList -cn -a "url" -s "/onedrive03"
 
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
 # 将获取的完整url内容替换命令中的 url 三个字母
-# 此操作将会自动添加的配置文件,每次产生得 url 只能用一次
+# 每次产生的 url 只能用一次, 重试请重新获取 url
+# 此操作将会自动添加的配置文件
 # 提示 Success! Add config. '/path/to/config.json' 则成功
 ```
 
