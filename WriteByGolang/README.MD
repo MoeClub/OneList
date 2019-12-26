@@ -25,6 +25,7 @@ OneList -cn -a "url" -s "/onedrive03"
 # 在浏览器地址栏中获取以 http://loaclhost 开头的整个url内容
 # 将获取的完整url内容替换命令中的 url 三个字母
 # 每次产生的 url 只能用一次, 重试请重新获取 url
+# 可以一个盘内的多个文件夹分别映射到多个`SubPath`上
 # 此操作将会自动添加的配置文件
 # 提示 Success! Add config. '/path/to/config.json' 则成功
 ```
@@ -39,7 +40,8 @@ OneList -cn -a "url" -s "/onedrive03"
     "MainLand": false,
     // 授权令牌
     "RefreshToken": "1234564567890ABCDEF",
-    // 单配置文件中,此项要唯一.将此OneDrive目录映射在 "/onedrive" 下. (支持根目录"/", 只推荐一个盘位的时候使用"/".)
+    // 单配置文件中,此项要唯一.将此OneDrive中设置为`RootPath`目录映射在`http://127.0.0.1:5288/onedrive` 下.
+    // (只推荐一个盘位的时候使用根目录"/".)
     "SubPath": "/onedrive",
     // 读取OneDrive的某个目录作为根目录. (支持根目录"/")
     "RootPath": "/Test",
