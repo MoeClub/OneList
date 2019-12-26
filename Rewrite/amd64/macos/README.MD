@@ -1,2 +1,2 @@
-# OneList By Golang
+# OneList - Written in GoLang
 ## MacOS amd64
