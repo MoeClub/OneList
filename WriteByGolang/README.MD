@@ -1,4 +1,4 @@
-# OneList Written in GoLang
+# OneList - Written in GoLang
 - 支持 国际版, 个人免费版(家庭版), 中国版(世纪互联).
 - 支持同时列出多个盘的目录.(要求每个盘的`SubPath`唯一)
 - 支持文件夹内超过 200 个项目
