@@ -1,4 +1,4 @@
-# OneDriveUploader
+# OneDriveUploader - Written in GoLang
 - 支持 国际版, 个人版(家庭版), 中国版(世纪互联).
 - 支持上传文件和文件夹到指定目录,并保持上传前的目录结构.
 - 支持命令参数使用, 方便外部程序调用.
