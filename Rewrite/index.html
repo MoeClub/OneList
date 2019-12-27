@@ -61,10 +61,10 @@
             position: relative;
             box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.1);
         }
-        .list-header-container {
+        .header-container {
             margin: 0;
             border: 0 none;
-            padding: 15px 50px;
+            padding: 5px 50px 10px;
             text-align: left;
             font-weight: 400;
             color: #000000;
@@ -102,6 +102,17 @@
             top: 35px;
             right: 35px;
         }
+        #search{
+            margin: 0;
+            border: 0 none;
+            border-radius:15px;
+            width: 100%;
+            padding: 5px 10px;
+            text-align: left;
+            font-size: inherit;
+            color: #000000;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
@@ -110,9 +121,12 @@
 </h1>
 <div class="list-wrapper">
     <div class="list-container">
-        <div class="list-header-container">
+        <div class="header-container">
             <h3>OneList Local Path</h3>
             <span id="back" class="icon-arrow-left2" onclick="Goto(Back());"></span>
+            <div class="search-container">
+                <input id="search" oninput="Search();" placeholder="Search" />
+            </div>
         </div>
         <div class="list-body-container">
             <table class="list-table">
@@ -211,6 +225,19 @@
         if (Num > 0){ElemNum = Num - 1;}
         ElemBack.innerHTML = ArrayPath[ElemNum];
         return ElemBack.childNodes[0].href
+    }
+    function Search() {
+        var searchVal = document.getElementById("search").value;
+        if (searchVal === undefined){ return; }
+        var ShowArray = document.getElementsByClassName("item");
+        for(i=0; i<ShowArray.length; i++){
+            var FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
+            if (FocusElem !== undefined && FocusElem.length === 1){
+                var newAttr = "table-row";
+                if (FocusElem[0].textContent.indexOf(searchVal.toString()) < 0) { newAttr = "none"; }
+                ShowArray[i].style.display = newAttr;
+            }
+        }
     }
     function View(Property) {
         ArrayFloder.sort(compare(Property));
