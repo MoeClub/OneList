@@ -228,13 +228,13 @@
     }
     function Search() {
         var searchVal = document.getElementById("search").value;
-        if (searchVal === undefined){ return; }
+        if (searchVal === undefined){ return; } else { searchVal = searchVal.toString().toLowerCase(); }
         var ShowArray = document.getElementsByClassName("item");
         for(i=0; i<ShowArray.length; i++){
             var FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
             if (FocusElem !== undefined && FocusElem.length === 1){
                 var newAttr = "table-row";
-                if (FocusElem[0].textContent.indexOf(searchVal.toString()) < 0) { newAttr = "none"; }
+                if (FocusElem[0].textContent.toLowerCase().indexOf(searchVal) < 0) { newAttr = "none"; }
                 ShowArray[i].style.display = newAttr;
             }
         }
