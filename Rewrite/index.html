@@ -44,15 +44,49 @@
             letter-spacing: 2px;
             line-height: 64px;
         }
+        h3 a:hover{
+            text-decoration: underline;
+        }
         a {
             text-decoration: none;
             color: black;
         }
-        a:hover {
-            text-decoration: underline;
+        table {
+            table-layout: fixed;
+            word-break: break-all;
         }
         th {
+            font-weight: bold;
+            text-align: right;
+        }
+        th:first-child {
+            text-align: left;
+            padding: 5px;
+            padding-left: 25px;
+            width: 68%;
+        }
+        th:nth-child(2),th:nth-child(3),td:nth-child(2),td:nth-child(3){
+            text-align: right;
+            width: 20%;
+        }
+        th:nth-child(3),td:nth-child(3){
+            width: 12%;
+        }
+        td {
             font-weight: normal;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        td:first-child{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        td:first-child:hover {
+            overflow: visible;
+            text-overflow: clip;
+            font-weight: bold;
+            white-space: normal;
         }
         .list-wrapper {
             width: 80%;
@@ -66,35 +100,24 @@
             border: 0 none;
             padding: 5px 50px 10px;
             text-align: left;
-            font-weight: 400;
+            font-weight: normal;
             color: #000000;
             background-color: #f7f7f9;
         }
-        .list-title th {
-            font-weight: bold;
-        }
         .list-body-container {
-            position: relative;
             left: 0;
             overflow-x: hidden;
             overflow-y: auto;
             box-sizing: border-box;
             background: white;
+            position: relative;
         }
         .list-table {
             width: 100%;
-            padding: 20px;
+            padding: 15px;
             border-spacing: 0;
         }
-        .list-table tr th{
-            text-align: right;
-        }
-        .list-table tr th:first-child {
-            text-align: left;
-            padding: 5px 0;
-        }
         .item:hover {
-            font-weight: 200;
             background-color: gainsboro;
         }
         #back{
@@ -261,7 +284,7 @@
             } else { continue }
             newChild.setAttribute('class', 'item');
             var ItemName = decodeURIComponent(ArrayItem[item]['name']);
-            newChild.innerHTML = "<th class=\"list-data\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ItemName +"'>" + ItemName + "</a></th><th class=\"list-data\">" + ArrayItem[item]['date'] + "</th><th class=\"list-data\">" + ArrayItem[item]['size'] + "</th>";
+            newChild.innerHTML = "<td class=\"list-data\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ItemName +"'>" + ItemName + "</a></td><td class=\"list-data\">" + ArrayItem[item]['date'] + "</td><td class=\"list-data\">" + ArrayItem[item]['size'] + "</td>";
             Elem.lastChild.appendChild(newChild);
         }
     }
