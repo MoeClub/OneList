@@ -93,7 +93,7 @@ $ OneList -bind 0.0.0.0 -port 80
 ## 注意
 - 打开空文件夹, 会提示 No Found.
 
-## Nginx 反代
+## Nginx 反代配置
 ```
     location ^~ /onedrive/ {
         proxy_set_header X-Real-IP $remote_addr;
