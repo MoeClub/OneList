@@ -9,7 +9,7 @@
     <title>storage - /</title>
     <link rel="stylesheet" href="//s2.pstatp.com/cdn/expire-1-M/mdui/0.4.0/css/mdui.min.css">
     <style>
-    body{background-color:#f2f5fa}.nexmoe-item{margin:20px -8px 0 !important;padding:15px !important;border-radius:5px;background-color:#fff;-webkit-box-shadow:0 .5em 3em rgba(161,177,204,.4);box-shadow:0 .5em 3em rgba(161,177,204,.4);background-color:#fff}.mdui-img-fluid,.mdui-video-fluid{border-radius:5px;border:1px solid #eee}.mdui-list{padding:0}.mdui-list-item{margin:0 !important;border-radius:5px;padding:0 10px 0 5px !important;border-bottom:1px solid #eee;margin-bottom:10px !important}.mdui-list-item:last-child{margin-bottom:0 !important}.mdui-toolbar{width:auto}.mdui-appbar .mdui-toolbar{height:56px;font-size:16px}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>.mdui-typo-headline{padding:0 16px 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar h3.title{padding:0 16px;line-height:30px;border-radius:30px;border:1px solid #eee;opacity:1;background-color:#1e89f2;color:#ffff}.mdui-toolbar>a:hover,a.mdui-typo-headline,a.active{opacity:1}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:48px}.mdui-toolbar>a{padding:0 16px;line-height:30px;border-radius:30px;border:1px solid #eee}.mdui-toolbar>a:last-child{opacity:1;background-color:#1e89f2;color:#ffff}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100% !important;margin:0}.mdui-toolbar>a:last-child,.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child{display:block}}#main-page{cursor:pointer}.nav-a{text-decoration: none;color:#333;}.nav-a:hover{text-decoration:underline}.file{width:100%;display:flex;align-items:center}.loading-wrapper{display:none;position:fixed;height:2em;line-height:2em;margin-top:.5em;width:100%;z-index:1}.loading{color:white;background:#dad7d7;height:100%;width:8em;margin:0 auto;text-align:center;border-radius:1em}.markdown-body{min-width:200px;margin:0 auto;padding:.7em 1em;font-size:1em}.markdown-body h1,h2,h3,h4,h5,h6{margin-top:0}.markdown-body img{max-width:90%;max-height:800px;width:auto;height:auto;display:block;margin:0 auto}.password{display:flex;align-items:center;margin:0 auto;padding-top:1em;display:none}
+    body{background-color:#f2f5fa}.nexmoe-item{margin:15px 0 !important;padding:15px !important;border-radius:5px;background-color:#fff;-webkit-box-shadow:0 .5em 3em rgba(161,177,204,.4);box-shadow:0 .5em 3em rgba(161,177,204,.4);background-color:#fff}.mdui-img-fluid,.mdui-video-fluid{border-radius:5px;border:1px solid #eee}.mdui-list{padding:0}.mdui-list-item{margin:0 !important;border-radius:5px;padding:0 10px 0 5px !important;border-bottom:1px solid #eee;margin-bottom:10px !important}.mdui-list-item:last-child{margin-bottom:0 !important}.mdui-toolbar{width:auto}.mdui-appbar .mdui-toolbar{height:56px;font-size:16px}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>.mdui-typo-headline{padding:0 16px 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar h3.title{padding:0 16px;line-height:30px;border-radius:30px;border:1px solid #eee;opacity:1;background-color:#1e89f2;color:#ffff}.mdui-toolbar>a:hover,a.mdui-typo-headline,a.active{opacity:1}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:48px}.mdui-toolbar>a{padding:0 16px;line-height:30px;border-radius:30px;border:1px solid #eee}.mdui-toolbar>a:last-child{opacity:1;background-color:#1e89f2;color:#ffff}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100% !important;margin:0}.mdui-toolbar>a:last-child,.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child{display:block}}#main-page{cursor:pointer}.nav-a{text-decoration: none;color:#333;}.nav-a:hover{text-decoration:underline}.file{width:100%;display:flex;align-items:center}.loading-wrapper{display:none;position:fixed;height:2em;line-height:2em;margin-top:.5em;width:100%;z-index:1}.loading{color:white;background:#dad7d7;height:100%;width:8em;margin:0 auto;text-align:center;border-radius:1em}.markdown-body{min-width:200px;margin:0 auto;padding:.7em 1em;font-size:1em}.markdown-body h1,h2,h3,h4,h5,h6{margin-top:0}.markdown-body img{max-width:90%;max-height:800px;width:auto;height:auto;display:block;margin:0 auto}.password{display:flex;align-items:center;margin:0 auto;padding-top:1em;display:none}#text-input,#close{display:none;}#text-input {width:40%;}
     </style>
 </head>
 <body>
@@ -18,9 +18,13 @@
         <div class="mdui-toolbar nexmoe-item nav">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue" id="main-page" onclick="goto(rootPath);">home</i>
             <span id="path">/</span>
+            <div class="mdui-toolbar-spacer"></div>
+            <input type="text" id="text-input" class="mdui-textfield-input" oninput="search(this);" placeholder="请输入关键字">
+            <button type="button" id="close" class="mdui-textfield-close mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">close</i></button>
+            <button type="button" id="btn" class="mdui-textfield-icon mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></button>
         </div>
     </div>
-    <div class="main mdui-container-fluid">
+    <div class="mdui-container-fluid">
         <div class="nexmoe-item list-wrapper">
             <div class="list-header">
                 <div class="file mdui-list-item th">
@@ -35,148 +39,161 @@
     </div>
 </div>
 <script>
-    let rootPath = "{{.RootPath}}",
-        currentPath = "{{.CurrentPath}}",
-        rawData = "{{.RawData}}",
-        title = 'storage - ';
-    if (currentPath === "/"){ currentPath = "" }
-    let reverse = false,
-        pageData = JSON.parse(window.atob(rawData)),
-        arrayPath = new Array(),
-        arrayFloder = new Array(),
-        arrayFile = new Array();
-    for(let item in pageData){
-        if (item.indexOf("@") == 0) { continue }
-        if (pageData[item]['@type'] == 'file') {
-            arrayFile.push(pageData[item]);
-        } else if (pageData[item]['@type'] == 'folder') {
-            arrayFloder.push(pageData[item]);
+let rootPath = "{{.RootPath}}",
+    currentPath = "{{.CurrentPath}}",
+    rawData = "{{.RawData}}",
+    title = 'storage - ';
+if (currentPath === "/"){ currentPath = "" }
+let reverse = false,
+    pageData = JSON.parse(window.atob(rawData)),
+    arrayPath = new Array(),
+    arrayFloder = new Array(),
+    arrayFile = new Array();
+for(let item in pageData){
+    if (item.indexOf("@") == 0) { continue }
+    if (pageData[item]['@type'] == 'file') {
+        arrayFile.push(pageData[item]);
+    } else if (pageData[item]['@type'] == 'folder') {
+        arrayFloder.push(pageData[item]);
+    }
+}
+function goto(thePath) {
+    window.location.href = thePath;
+}
+function sizeNum(Size) {
+    let dataArray = Size.split(" ", 2),
+        dataNum = 0;
+    switch (dataArray[1]) {
+        case "B":
+            dataNum = 2 ** 0 * dataArray[0];
+            break;
+        case "KB":
+            dataNum = 2 ** 10 * dataArray[0];
+            break;
+        case "MB":
+            dataNum = 2 ** 20 * dataArray[0];
+            break;
+        case "GB":
+            dataNum = 2 ** 30 * dataArray[0];
+            break;
+        case "TB":
+            dataNum = 2 ** 40 * dataArray[0];
+            break;
+        default:
+            dataNum = 2 ** 50 * dataArray[0];
+    }
+    return dataNum;
+}
+function compare(property) {
+    if (property === "size") {
+        return function(a,b){
+            let value0 = sizeNum(a[property].toUpperCase());
+            let value1 = sizeNum(b[property].toUpperCase());
+            return value0 - value1;
+        }
+    } else {
+        return function(a,b){
+            let value0 = a[property].toLowerCase();
+            let value1 = b[property].toLowerCase();
+            return value0.localeCompare(value1);
         }
     }
-
-    function goto(thePath) {
-        window.location.href = thePath;
-    }
-
-    function sizeNum(Size) {
-        let dataArray = Size.split(" ", 2),
-            dataNum = 0;
-        switch (dataArray[1]) {
-            case "B":
-                dataNum = 2 ** 0 * dataArray[0];
-                break;
-            case "KB":
-                dataNum = 2 ** 10 * dataArray[0];
-                break;
-            case "MB":
-                dataNum = 2 ** 20 * dataArray[0];
-                break;
-            case "GB":
-                dataNum = 2 ** 30 * dataArray[0];
-                break;
-            case "TB":
-                dataNum = 2 ** 40 * dataArray[0];
-                break;
-            default:
-                dataNum = 2 ** 50 * dataArray[0];
-        }
-        return dataNum;
-    }
-
-    function compare(property) {
-        if (property === "size") {
-            return function(a,b){
-                let value0 = sizeNum(a[property].toUpperCase());
-                let value1 = sizeNum(b[property].toUpperCase());
-                return value0 - value1;
-            }
-        } else {
-            return function(a,b){
-                let value0 = a[property].toLowerCase();
-                let value1 = b[property].toLowerCase();
-                return value0.localeCompare(value1);
-            }
+}
+function clear() {
+    let classList = new Array("file-wrapper");
+    for(let item in classList){
+        let obj = document.getElementsByClassName(classList[item]);
+        for(let i = obj.length-1; i >= 0 ; i--) {
+            obj[i].parentNode.removeChild(obj[i]);
         }
     }
-
-    function clear() {
-        let classList = new Array("file-wrapper");
-        for(let item in classList){
-            let obj = document.getElementsByClassName(classList[item]);
-            for(let i = obj.length-1; i >= 0 ; i--) {
-                obj[i].parentNode.removeChild(obj[i]);
-            }
-        }
-        let nav = document.getElementById("path"),
-            pathSpan = document.createElement("span"),
-            locPath = currentPath.trim().replace(/^\//, "").replace(/\/$/, "");
-            locArray = new Array('');
-        if (nav.innerHTML.length > 0) {
-            nav.innerHTML = '';
-        }
-        if (locPath !== "" ){
-            let locPathArr = locPath.split("/"),
-                localHref = "";
-            for(let j=0; j<locPathArr.length; j++){
-                localHref += "/" + locPathArr[j];
-                if (j === 0 && rootPath !== "/"){ continue }
-                navTemp = `<a class="nav-a" href="//${window.location.host}${localHref}">${locPathArr[j]}</a>`
-                locArray.push(navTemp);
-            }
-        }
-        pathSpan.innerHTML = locArray.join("/");
-        nav.appendChild(pathSpan);
-        navText = (nav.innerHTML.length === 0) ? '/' : pathSpan.innerHTML.replace(/<[^>]+>/g,"");
-        document.title += navText.substr(1);
-        arrayPath = locArray;
+    let nav = document.getElementById("path"),
+        pathSpan = document.createElement("span"),
+        locPath = currentPath.trim().replace(/^\//, "").replace(/\/$/, "");
+        locArray = new Array('');
+    if (nav.innerHTML.length > 0) {
+        nav.innerHTML = '';
     }
-
-    function search() {
-        let searchVal = document.getElementById("search").value;
-        if (searchVal === undefined){ return; } else { searchVal = searchVal.toString().toLowerCase(); }
-        let ShowArray = document.getElementsByClassName("item");
-        for(i=0; i<ShowArray.length; i++){
-            let FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
-            if (FocusElem !== undefined && FocusElem.length === 1){
-                let newAttr = "table-row";
-                if (FocusElem[0].textContent.toLowerCase().indexOf(searchVal) < 0) { newAttr = "none"; }
-                ShowArray[i].style.display = newAttr;
-            }
+    if (locPath !== "" ){
+        let locPathArr = locPath.split("/"),
+            localHref = "";
+        for(let j=0; j<locPathArr.length; j++){
+            localHref += "/" + locPathArr[j];
+            if (j === 0 && rootPath !== "/"){ continue }
+            navTemp = `<a class="nav-a" href="//${window.location.host}${localHref}">${locPathArr[j]}</a>`
+            locArray.push(navTemp);
         }
     }
-
-    function view(Property) {
-        arrayFloder.sort(compare(Property));
-        arrayFile.sort(compare(Property));
-        if (reverse) {
-            arrayFloder.reverse();
-            arrayFile.reverse();
-        }
-        reverse = !(reverse);
-        clear();
-        let obj = document.getElementById('file-list');
-        let items = arrayFloder.concat(arrayFile);
-        for(let item in items){
-            let newChild = document.createElement("div");
-            let icon = "";
-            if (items[item]['@type'] == 'folder') {
-                icon = 'folder_open';
-            }else {
-                icon = 'image_aspect_ratio'
-            }
-            newChild.setAttribute('class', 'row file-wrapper mdui-list-item mdui-ripple');
-            let ItemName = decodeURIComponent(items[item]['name']);
-            newChild.innerHTML = `
-                <div class="file" onclick="javascript:window.location.href='//${window.location.host}${currentPath}/${ItemName}'">
-                    <i class="mdui-icon material-icons">${icon}</i>
-                        <span class="name mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">${ItemName}</span>
-                        <span class="time mdui-col-sm-3 mdui-text-right">${items[item]['date']}</span>
-                        <span class="size mdui-col-sm-2 mdui-text-right">${items[item]['size']}</span>
-                </div>`;
-            obj.appendChild(newChild);
+    pathSpan.innerHTML = locArray.join("/");
+    nav.appendChild(pathSpan);
+    navText = (nav.innerHTML.length === 0) ? '/' : pathSpan.innerHTML.replace(/<[^>]+>/g,"");
+    document.title += navText.substr(1);
+    arrayPath = locArray;
+}
+function search(obj) {
+    let searchVal = obj.value;
+    if (searchVal === undefined){ return; } else { searchVal = searchVal.toString().toLowerCase(); }
+    let showArray = document.getElementsByClassName("file-wrapper");
+    for(let i=0; i<showArray.length; i++){
+        let content = showArray[i].children[0].querySelector("span.mdui-text-truncate").innerText;
+        if (content !== undefined && content.length > 0){
+            let newAttr = '';
+            if (content.toLowerCase().indexOf(searchVal) < 0) { newAttr = "none"; }
+            showArray[i].style.display = newAttr;
         }
     }
-    window.onload = view("name");
+}
+function view(Property) {
+    arrayFloder.sort(compare(Property));
+    arrayFile.sort(compare(Property));
+    if (reverse) {
+        arrayFloder.reverse();
+        arrayFile.reverse();
+    }
+    reverse = !(reverse);
+    clear();
+    let obj = document.getElementById('file-list');
+    let items = arrayFloder.concat(arrayFile);
+    for(let item in items){
+        let newChild = document.createElement("div");
+        let icon = "";
+        if (items[item]['@type'] == 'folder') {
+            icon = 'folder_open';
+        }else {
+            icon = 'image_aspect_ratio'
+        }
+        newChild.setAttribute('class', 'row file-wrapper mdui-list-item mdui-ripple');
+        let ItemName = decodeURIComponent(items[item]['name']);
+        newChild.innerHTML = `
+            <div class="file" onclick="javascript:window.location.href='//${window.location.host}${currentPath}/${ItemName}'">
+                <i class="mdui-icon material-icons">${icon}</i>
+                    <span class="name mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">${ItemName}</span>
+                    <span class="time mdui-col-sm-3 mdui-text-right">${items[item]['date']}</span>
+                    <span class="size mdui-col-sm-2 mdui-text-right">${items[item]['size']}</span>
+            </div>`;
+        obj.appendChild(newChild);
+    }
+}
+function show(obj){
+    return obj.setAttribute('style','display:block')
+}
+function hide(obj){
+    return obj.setAttribute('style','display:none')
+}
+let btn = document.getElementById('btn'),
+    close = document.getElementById('close'),
+    stext = document.getElementById('text-input');
+    btn.addEventListener('click',function(){
+        show(stext);
+        show(close);
+        hide(btn);
+    },false);
+    close.addEventListener('click',function(){
+        hide(stext);
+        hide(close);
+        show(btn);
+    },false);
+window.onload = view("name");
 </script>
 </body>
 </html>
