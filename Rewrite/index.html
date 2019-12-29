@@ -168,13 +168,13 @@
     var RootPath = "{{.RootPath}}";
     var CurrentPath = "{{.CurrentPath}}";
     var RawData = "{{.RawData}}";
-    if (CurrentPath === "/"){ CurrentPath = "" }
     var Reverse = false;
     var PageData = JSON.parse(window.atob(RawData));
     var ArrayPath = new Array();
     var ArrayFloder = new Array();
     var ArrayFile = new Array();
-    for(var item in PageData){
+    if (CurrentPath === "/"){ CurrentPath = "" }
+    for(let item in PageData){
         if (item.indexOf("@") == 0) { continue }
         if (PageData[item]['@type'] == 'file') {
             ArrayFile.push(PageData[item]);
@@ -184,55 +184,64 @@
     }
     function Goto(thePath) {window.location.href = thePath;}
     function SizeNum(Size) {
-        var dataArray = Size.split(" ", 2);
-        var dataNum = 0;
-        if (dataArray[1] === "B"){
-            dataNum = 2 ** 0 * dataArray[0];
-        } else if (dataArray[1] === "KB"){
-            dataNum = 2 ** 10 * dataArray[0];
-        } else if (dataArray[1] === "MB"){
-            dataNum = 2 ** 20 * dataArray[0];
-        } else if (dataArray[1] === "GB"){
-            dataNum = 2 ** 30 * dataArray[0];
-        } else if (dataArray[1] === "TB"){
-            dataNum = 2 ** 40 * dataArray[0];
-        } else if (dataArray[1] === "PB"){
-            dataNum = 2 ** 50 * dataArray[0];
+        let dataArray = Size.split(" ", 2);
+        let dataNum = 0;
+        switch (dataArray[1]) {
+            case "B":
+                dataNum = 2 ** 0 * dataArray[0];
+                break;
+            case "KB":
+                dataNum = 2 ** 10 * dataArray[0];
+                break;
+            case "MB":
+                dataNum = 2 ** 20 * dataArray[0];
+                break;
+            case "GB":
+                dataNum = 2 ** 30 * dataArray[0];
+                break;
+            case "TB":
+                dataNum = 2 ** 40 * dataArray[0];
+                break;
+            case "PB":
+                dataNum = 2 ** 50 * dataArray[0];
+                break;
+            default:
+                dataNum = 0;
         }
         return dataNum;
     }
     function compare(property) {
         if (property === "size") {
             return function(a,b){
-                var value0 = SizeNum(a[property].toUpperCase());
-                var value1 = SizeNum(b[property].toUpperCase());
+                let value0 = SizeNum(a[property].toUpperCase());
+                let value1 = SizeNum(b[property].toUpperCase());
                 return value0 - value1;
             }
         } else {
             return function(a,b){
-                var value0 = a[property].toLowerCase();
-                var value1 = b[property].toLowerCase();
+                let value0 = a[property].toLowerCase();
+                let value1 = b[property].toLowerCase();
                 return value0.localeCompare(value1);
             }
         }
     }
     function Clear() {
-        var ClassList = new Array("item");
-        for(var item in ClassList){
-            var Elem = document.getElementsByClassName(ClassList[item]);
-            for(var i = Elem.length-1; i >= 0 ; i--) {
+        let ClassList = new Array("item");
+        for(let item in ClassList){
+            let Elem = document.getElementsByClassName(ClassList[item]);
+            for(let i = Elem.length-1; i >= 0 ; i--) {
                 Elem[i].parentNode.removeChild(Elem[i]);
             }
         }
-        var ElemH3 = document.getElementsByTagName("h3")[0];
-        var newH3 = document.createElement("h3");
-        var localPath = CurrentPath.trim().replace(/^\//, "").replace(/\/$/, "");
-        var localHtmlArray = new Array();
+        let ElemH3 = document.getElementsByTagName("h3")[0];
+        let newH3 = document.createElement("h3");
+        let localPath = CurrentPath.trim().replace(/^\//, "").replace(/\/$/, "");
+        let localHtmlArray = new Array();
         localHtmlArray.push("<a href='//" + window.location.host + RootPath + "'>" + '<span class="icon-home"></span>' + "</a>");
         if (localPath !== "" ){
-            var localPathArray = localPath.split("/");
-            var localHref = "";
-            for(var j=0; j<localPathArray.length; j++){
+            let localPathArray = localPath.split("/");
+            let localHref = "";
+            for(let j=0; j<localPathArray.length; j++){
                 localHref += "/" + localPathArray[j];
                 if (j === 0 && RootPath !== "/"){ continue }
                 localHtmlArray.push("<a href='//" + window.location.host + localHref + "'>" + localPathArray[j] + "</a>");
@@ -243,21 +252,21 @@
         ArrayPath = localHtmlArray;
     }
     function Back() {
-        var Num = ArrayPath.length - 1;
-        var ElemNum = 0;
-        var ElemBack = document.createElement("div");
+        let Num = ArrayPath.length - 1;
+        let ElemNum = 0;
+        let ElemBack = document.createElement("div");
         if (Num > 0){ElemNum = Num - 1;}
         ElemBack.innerHTML = ArrayPath[ElemNum];
         return ElemBack.childNodes[0].href
     }
     function Search() {
-        var searchVal = document.getElementById("search").value;
+        let searchVal = document.getElementById("search").value;
         if (searchVal === undefined){ return; } else { searchVal = searchVal.toString().toLowerCase(); }
-        var ShowArray = document.getElementsByClassName("item");
+        let ShowArray = document.getElementsByClassName("item");
         for(i=0; i<ShowArray.length; i++){
-            var FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
+            let FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
             if (FocusElem !== undefined && FocusElem.length === 1){
-                var newAttr = "table-row";
+                let newAttr = "table-row";
                 if (FocusElem[0].textContent.toLowerCase().indexOf(searchVal) < 0) { newAttr = "none"; }
                 ShowArray[i].style.display = newAttr;
             }
@@ -272,18 +281,18 @@
         }
         Reverse = !(Reverse);
         Clear();
-        var Elem = document.getElementsByClassName("list-table")[0];
-        var ArrayItem = ArrayFloder.concat(ArrayFile);
-        for(var item in ArrayItem){
-            var newChild = document.createElement("tr");
-            var iconHtml = "";
+        let Elem = document.getElementsByClassName("list-table")[0];
+        let ArrayItem = ArrayFloder.concat(ArrayFile);
+        for(let item in ArrayItem){
+            let newChild = document.createElement("tr");
+            let iconHtml = "";
             if (ArrayItem[item]['@type'] == 'folder') {
                 iconHtml = '<span class="icon-folder-open"> </span>';
             } else if (ArrayItem[item]['@type'] == 'file') {
                 iconHtml = '<span class="icon-file-text2"> </span>';
             } else { continue }
             newChild.setAttribute('class', 'item');
-            var ItemName = decodeURIComponent(ArrayItem[item]['name']);
+            let ItemName = decodeURIComponent(ArrayItem[item]['name']);
             newChild.innerHTML = "<td class=\"list-data\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ItemName +"'>" + ItemName + "</a></td><td class=\"list-data\">" + ArrayItem[item]['date'] + "</td><td class=\"list-data\">" + ArrayItem[item]['size'] + "</td>";
             Elem.lastChild.appendChild(newChild);
         }
