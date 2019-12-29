@@ -45,7 +45,7 @@ OneList -cn -a "url" -s "/onedrive03"
     "SubPath": "/onedrive",
     // 读取OneDrive的某个目录作为根目录. (支持根目录"/")
     "RootPath": "/Test",
-    // 隐藏OneDrive目录中的文件夹和文件, 条目间使用 "|" 分割.
+    // 隐藏OneDrive目录中的文件夹和文件, 条目间使用 "|" 分割. (跳过缓存设置的条目.)
     "HidePath": "/Test/Obj01|/Test/Obj02",
     // 使用用户名和密码加密OneDrive目录. 目录和用户名密码间使用 "?" 分割, 用户名密码使用 ":" 分割, 条目间使用 "|" 分割. 无效条目将跳过. 
     "AuthPath": "/Test/Auth01?user01:pwd01|/Test/Auth02?user02:pwd02",
