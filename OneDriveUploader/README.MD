@@ -89,7 +89,7 @@ Usage of OneDriveUploader:
     // 如果是中国版(世纪互联), 此项应为 true.
     "MainLand": false,
     // 如果是家庭版或者个人免费版, 此项应为 true.
-    "MSAccount": false
+    "MSAccount": true
 }
 ```
 
