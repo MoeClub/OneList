@@ -73,6 +73,26 @@ Usage of OneDriveUploader:
         OneDrive by Microsoft.
 ```
 
+## 配置
+```
+{
+    // 授权令牌
+    "RefreshToken": "1234564567890ABCDEF",
+    // 最大线程数.(同时上传文件的数量)
+    "ThreadNum": "2",
+    // 最大上传分块大小.(每次上传文件的最大分块大小,网络不好建议调低. 单位:MB)
+    "BlockSize": "10",
+    // 最大单文件大小.(目前: 个人版(家庭版)单文件限制为100GB; 其他版本单文件限制为15GB,正在逐步更新为100GB. 单位:GB)
+    "SigleFile": "100",
+    // 缓存刷新间隔.
+    "RefreshInterval": 1500,
+    // 如果是中国版(世纪互联), 此项应为 true.
+    "MainLand": false,
+    // 如果是家庭版或者个人免费版, 此项应为 true.
+    "MSAccount": false
+}
+```
+
 ## 示例
 ```
 # 一些示例:
