@@ -112,4 +112,5 @@ $ OneList -bind 0.0.0.0 -port 80
 ```
 # 国际版: 78d4dc35-7e46-42c6-9023-2d39314433a5| ZudGl-p.m=LMmr3VrKgAyOf-WevB3p50
 # 中国版: dfe36e60-6133-48cf-869f-4d15b8354769| H0-1:6.Sb8:WCW/J-c]K@fddCt[i0EZ2
+# ReplyURL: http://localhost/onedrive-login
 ```
