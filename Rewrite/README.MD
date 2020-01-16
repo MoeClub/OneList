@@ -78,6 +78,10 @@ Usage of OneList:
   -t string
         // Index.html 目录样式文件
         Index file. (default "index.html")
+  -json
+        // 开关
+        // 数据以 json 形式输出
+        Output json.
   -cn
         // 开关
         // 授权中国版(世纪互联), 需要此参数.
