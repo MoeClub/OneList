@@ -108,7 +108,7 @@ $ OneList -bind 0.0.0.0 -port 80
 ```
 
 ## 注意
-- 打开空文件夹, 会提示 No Found.
+- 在初次缓存过程中或者打开空文件夹, 会提示 No Found.
 - 请使用 UTF-8 编码模式手动编辑 config.json 文件.
 
 ## Nginx 反代配置
