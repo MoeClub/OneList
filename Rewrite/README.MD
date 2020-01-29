@@ -1,6 +1,6 @@
 # OneList - Written in GoLang
 - 支持 国际版, 个人免费版(家庭版), 中国版(世纪互联).
-- 支持同时列出多个盘的目录.(同时挂载多个网盘,要求每个盘的`SubPath`唯一)
+- 支持同时列出多个盘的目录.(同时挂载多个网盘或单个网盘挂载成多个`SubPath`,要求每个`SubPath`唯一)
 - 支持文件夹内超过 200 个项目
 - 支持后台自动刷新缓存.
 - 支持路径中含有特殊字符.
@@ -81,7 +81,7 @@ Usage of OneList:
         Index file. (default "index.html")
   -json
         // 开关
-        // 数据以 json 形式输出
+        // 数据以 json 形式输出当前目录数据
         Output json.
   -cn
         // 开关
