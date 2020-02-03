@@ -187,22 +187,22 @@
         let dataNum = 0;
         switch (dataArray[1]) {
             case "B":
-                dataNum = 2 ** 0 * dataArray[0];
+                dataNum = Math.pow(2, 0) * dataArray[0];
                 break;
             case "KB":
-                dataNum = 2 ** 10 * dataArray[0];
+                dataNum = Math.pow(2, 10) * dataArray[0];
                 break;
             case "MB":
-                dataNum = 2 ** 20 * dataArray[0];
+                dataNum = Math.pow(2, 20) * dataArray[0];
                 break;
             case "GB":
-                dataNum = 2 ** 30 * dataArray[0];
+                dataNum = Math.pow(2, 30) * dataArray[0];
                 break;
             case "TB":
-                dataNum = 2 ** 40 * dataArray[0];
+                dataNum = Math.pow(2, 40) * dataArray[0];
                 break;
             case "PB":
-                dataNum = 2 ** 50 * dataArray[0];
+                dataNum = Math.pow(2, 50) * dataArray[0];
                 break;
             default:
                 dataNum = 0;
