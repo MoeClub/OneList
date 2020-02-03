@@ -246,8 +246,7 @@
                 localHtmlArray.push("<a href='//" + window.location.host + localHref + "'>" + localPathArray[j] + "</a>");
             }
         }
-        newH3.innerHTML = localHtmlArray.join(" / ");
-        ElemH3.replaceWith(newH3);
+        ElemH3.innerHTML = localHtmlArray.join(" / ");
         ArrayPath = localHtmlArray;
     }
     function Back() {
