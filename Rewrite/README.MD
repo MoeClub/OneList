@@ -123,11 +123,11 @@ $ OneList -bind 0.0.0.0 -port 80
 ```
 # /path/to/OneList 为OneList的完整路径
 # 后台运行
-nohup /path/to/OneList -bind 0.0.0.0 -p 80 >/dev/null 2>&1 &
+nohup /path/to/OneList -bind 0.0.0.0 -port 80 >/dev/null 2>&1 &
 
 # 开机自启并后台运行
 编辑 /etc/cron 文件, 并添加下面一行并多按几个回车. (有些系统不留空行会出现意外)
-@reboot root nohup /path/to/OneList -bind 0.0.0.0 -p 80 >/dev/null 2>&1 &
+@reboot root nohup /path/to/OneList -bind 0.0.0.0 -port 80 >/dev/null 2>&1 &
 
 ```
 
