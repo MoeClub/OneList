@@ -119,6 +119,18 @@ $ OneList -bind 0.0.0.0 -port 80
     }
 ```
 
+## 后台运行及开机自启
+```
+# /path/to/OneList 为OneList的完整路径
+# 后台运行
+nohup /path/to/OneList -bind 0.0.0.0 -p 80 >/dev/null 2>&1 &
+
+# 开机自启
+编辑 /etc/cron 文件, 并添加下面一行并多按几个回车. (有些系统不留空行会出现意外)
+@reboot root nohup /path/to/OneList -bind 0.0.0.0 -p 80 >/dev/null 2>&1 &
+
+```
+
 ## Client/Secret (~ 2299/12/31)
 ```
 # 国际版: 78d4dc35-7e46-42c6-9023-2d39314433a5| ZudGl-p.m=LMmr3VrKgAyOf-WevB3p50
