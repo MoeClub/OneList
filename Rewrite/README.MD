@@ -97,6 +97,11 @@ Usage of OneList:
   -S string
         // 覆写所有预置的 Secret Key. (不建议新手使用此参数)
         Set Secret Key. [Overwrite all secretKey]
+  -P string
+        // 设置反代域名.此设置将全部流量定向到某个服务器或CDN,用于隐藏全局域名或者加速.
+        // 每组以";"相间隔. 源域名与目标域名以"|"间隔. 可以设置多组.
+        // 默认为空. (不建议新手使用此参数)
+        Set Proxy Domain. [x.sharepoint.com|domain.com;...]
 ```
 
 ## 运行
