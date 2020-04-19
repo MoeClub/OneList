@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Cloud</title>
+  <link href="//s0.pstatp.com/cdn/expire-1-M/dplayer/1.25.0/DPlayer.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      background-color: #f7f7f9;
+      color: #000;
+      font-size: 14px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1em
+    }
+
+    a {
+      color: #24292e;
+      text-decoration: none;
+      cursor: pointer
+    }
+
+    a:hover {
+      color: #24292e
+    }
+
+    div,
+    textarea {
+      border-radius: 15px
+    }
+
+    #dplayer,
+    #dplayerContainer,
+    #imageBox,
+    .dplayer-video-wrap {
+      border-radius: unset
+    }
+
+    #dplayerContainer {
+      background-color: #000
+    }
+
+    .title {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      letter-spacing: 2px
+    }
+
+    .title a {
+      color: #333;
+      text-decoration: none;
+      font-size: 150%
+    }
+
+    .list-wrapper {
+      position: relative;
+      margin: 0 auto 40px;
+      width: 80%;
+      box-shadow: 0 0 32px 0 rgba(0, 0, 0, .1)
+    }
+
+    .list-container {
+      position: relative;
+      overflow: hidden
+    }
+
+    .list-header-container {
+      position: relative
+    }
+
+    .list-header-container a.back-link {
+      position: absolute;
+      display: inline-block;
+      margin: 20px 10px;
+      padding: 10px 10px;
+      color: #000;
+      vertical-align: middle;
+      text-decoration: none;
+      font-size: 16px
+    }
+
+    .list-container,
+    .list-header-container,
+    .list-wrapper,
+    a.back-link:hover,
+    body {
+      color: #24292e
+    }
+
+    .list-header-container .table-header {
+      margin: 0;
+      padding: 15px 20px;
+      border: 0 none;
+      background-color: #f7f7f9;
+      color: #000;
+      text-align: left;
+      font-weight: 400;
+      line-height: 1.3em
+    }
+
+    .list-body-container {
+      position: relative;
+      left: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      box-sizing: border-box;
+      background: #fff
+    }
+
+    .list-table {
+      padding: 10px;
+      width: 100%;
+      border-spacing: 0
+    }
+
+    .list-table tr {
+      height: 40px
+    }
+
+    .list-table tr.item:hover {
+      background: #f1f1f1
+    }
+
+    .list-table tr:first-child {
+      background: #fff
+    }
+
+    .list-table td,
+    .list-table th {
+      overflow: hidden;
+      padding: 0 10px;
+      max-width: 5em;
+      text-align: left;
+      text-overflow: ellipsis;
+      white-space: nowrap
+    }
+
+    .list-table .file ion-icon {
+      margin-right: 0;
+      vertical-align: bottom;
+      font-size: 15px
+    }
+
+    .list-table .file:hover {
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+      font-weight: 700
+    }
+
+    .list-table .size {
+      width: 13%;
+      border-radius: 0 25px 25px 0
+    }
+
+    .list-table .updated_at {
+      width: 20%
+    }
+
+    .list-table .file {
+      border-radius: 25px 0 0 25px
+    }
+
+    @media only screen and (max-width:480px) {
+      body {
+        margin: 5px
+      }
+
+      .title {
+        margin-bottom: 24px;
+        font-size: 1.5em
+      }
+
+      .list-wrapper {
+        margin-bottom: 24px;
+        width: 100%
+      }
+
+      .list-table {
+        padding: 1em 0
+      }
+
+      .list-table .updated_at {
+        display: none
+      }
+    }
+
+    .list-table .size,
+    .list-table .updated_at {
+      text-align-last: right
+    }
+
+    .search-container {
+      padding: 0 15px 10px
+    }
+
+    #search {
+      box-sizing: border-box;
+      padding: 5px 5px;
+      width: 100%;
+      outline: 0;
+      border: 0 none;
+      border-radius: 15px;
+      background-color: #fff;
+      color: #000;
+      text-align: left;
+      font-size: inherit
+    }
+
+    #back {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: inline-table;
+      padding: 15px 20px;
+      vertical-align: middle;
+      font-size: 16px;
+      cursor: pointer
+    }
+
+    button#closevideo {
+      position: relative;
+      margin-right: 0;
+      margin-left: 0;
+      width: 36px;
+      height: 36px;
+      border: none;
+      background: 0 0;
+      cursor: pointer
+    }
+
+    span.icon-cross {
+      position: absolute;
+      width: 24px;
+      line-height: 24px;
+      transform: translate(-12px, -12px)
+    }
+
+    #imageBox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: table;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .7);
+      text-align: center
+    }
+
+    #imageBoxContainer {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      -webkit-transform: translate3D(0, -50%, 0);
+      transform: translate3D(0, -50%, 0)
+    }
+
+    #imageBoxImage {
+      display: table-cell;
+      margin: 0 auto;
+      width: auto;
+      max-width: 80%;
+      vertical-align: middle;
+      text-align: center
+    }
+
+    @font-face {
+      font-weight: 400;
+      font-style: normal;
+      font-family: icomoon;
+      src: url("data:application/x-font-woff;charset=utf-8;base64,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") format('woff');
+      font-display: block
+    }
+
+    [class*=" icon-"],
+    [class^=icon-] {
+      text-transform: none;
+      font-weight: 400;
+      font-style: normal;
+      font-variant: normal;
+      font-family: icomoon !important;
+      line-height: 1;
+      speak: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale
+    }
+
+    .icon-home:before {
+      content: "\e900"
+    }
+
+    .icon-folder-open:before {
+      content: "\e930"
+    }
+
+    .icon-file-text2:before {
+      content: "\e926"
+    }
+
+    .icon-arrow-left2:before {
+      content: "\ea40"
+    }
+
+    .icon-cross:before {
+      color: #fff;
+      content: "\ea0f"
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">
+    <a onclick="Goto(RootPath);">Cloud</a>
+  </h1>
+  <div class="list-wrapper">
+    <div class="list-container">
+      <div class="list-header-container">
+        <h3 class="table-header">OneList Local Path</h3>
+        <span id="back" class="icon-arrow-left2" onclick="Goto(Back());"></span>
+        <div class="search-container">
+          <input id="search" oninput="Search();" placeholder="Search" />
+        </div>
+        <p style="padding-left: 20px;color: #666;font-style: italic;">Tip：点击文件名右侧空白处可预览视频、音乐和图片文件。</p>
+      </div>
+      <div class="list-body-container">
+        <table class="list-table">
+          <tr class="list-title">
+            <th class="file" onclick="View('name');">文件</th>
+            <th class="updated_at" onclick="View('date');">时间</th>
+            <th class="size" onclick="View('size');">大小</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="//s0.pstatp.com/cdn/expire-1-M/??mdui/0.4.0/js/mdui.min.js,dplayer/1.25.0/DPlayer.min.js"></script>
+<!--<script src="http://blog.z-os.cn/one.js"></script>-->
+<script>
+var RootPath = "{{.RootPath}}";
+var CurrentPath = "{{.CurrentPath}}";
+var RawData = "{{.RawData}}";
+var Reverse = false;
+var PageData = JSON.parse(window.atob(RawData));
+console.log(PageData);
+var ArrayPath = new Array();
+var ArrayFloder = new Array();
+var ArrayFile = new Array();
+var $$ = mdui.JQ;
+var Domain = window.location.host;
+if (CurrentPath === "/") { CurrentPath = "" }
+for (let item in PageData) {
+  if (item.indexOf("@") == 0) { continue }
+  if (PageData[item]['@type'] == 'file') {
+    ArrayFile.push(PageData[item]);
+  } else if (PageData[item]['@type'] == 'folder') {
+    ArrayFloder.push(PageData[item]);
+  }
+}
+function Goto(thePath) { window.location.href = thePath; }
+function SizeNum(Size) {
+  let dataArray = Size.split(" ", 2);
+  let dataNum = 0;
+  switch (dataArray[1]) {
+    case "B":
+      dataNum = Math.pow(2, 0) * dataArray[0];
+      break;
+    case "KB":
+      dataNum = Math.pow(2, 10) * dataArray[0];
+      break;
+    case "MB":
+      dataNum = Math.pow(2, 20) * dataArray[0];
+      break;
+    case "GB":
+      dataNum = Math.pow(2, 30) * dataArray[0];
+      break;
+    case "TB":
+      dataNum = Math.pow(2, 40) * dataArray[0];
+      break;
+    case "PB":
+      dataNum = Math.pow(2, 50) * dataArray[0];
+      break;
+    default:
+      dataNum = 0;
+  }
+  return dataNum;
+}
+function compare(property) {
+  if (property === "size") {
+    return function (a, b) {
+      let value0 = SizeNum(a[property].toUpperCase());
+      let value1 = SizeNum(b[property].toUpperCase());
+      return value0 - value1;
+    }
+  } else {
+    return function (a, b) {
+      let value0 = a[property].toLowerCase();
+      let value1 = b[property].toLowerCase();
+      return value0.localeCompare(value1);
+    }
+  }
+}
+function Clear() {
+  let ClassList = new Array("item");
+  for (let item in ClassList) {
+    let Elem = document.getElementsByClassName(ClassList[item]);
+    for (let i = Elem.length - 1; i >= 0; i--) {
+      Elem[i].parentNode.removeChild(Elem[i]);
+    }
+  }
+  let ElemH3 = document.getElementsByTagName("h3")[0];
+  let newH3 = document.createElement("h3");
+  let localPath = CurrentPath.trim().replace(/^\//, "").replace(/\/$/, "");
+  let localHtmlArray = new Array();
+  localHtmlArray.push("<a href='//" + window.location.host + RootPath + "'>" + '<span class="icon-home"></span>' + "</a>");
+  if (localPath !== "") {
+    let localPathArray = localPath.split("/");
+    let localHref = "";
+    for (let j = 0; j < localPathArray.length; j++) {
+      localHref += "/" + localPathArray[j];
+      if (j === 0 && RootPath !== "/") { continue }
+      localHtmlArray.push("<a href='//" + window.location.host + localHref + "'>" + localPathArray[j] + "</a>");
+    }
+  }
+  ElemH3.innerHTML = localHtmlArray.join(" / ");
+  ArrayPath = localHtmlArray;
+}
+function Back() {
+  let Num = ArrayPath.length - 1;
+  let ElemNum = 0;
+  let ElemBack = document.createElement("div");
+  if (Num > 0) { ElemNum = Num - 1; }
+  ElemBack.innerHTML = ArrayPath[ElemNum];
+  return ElemBack.childNodes[0].href
+}
+function Search() {
+  let searchVal = document.getElementById("search").value;
+  if (searchVal === undefined) { return; } else { searchVal = searchVal.toString().toLowerCase(); }
+  let ShowArray = document.getElementsByClassName("item");
+  for (i = 0; i < ShowArray.length; i++) {
+    let FocusElem = ShowArray[i].children[0].getElementsByTagName("a");
+    if (FocusElem !== undefined && FocusElem.length === 1) {
+      let newAttr = "table-row";
+      if (FocusElem[0].textContent.toLowerCase().indexOf(searchVal) < 0) { newAttr = "none"; }
+      ShowArray[i].style.display = newAttr;
+    }
+  }
+}
+function View(Property) {
+  ArrayFloder.sort(compare(Property));
+  ArrayFile.sort(compare(Property));
+  if (Reverse) {
+    ArrayFloder.reverse();
+    ArrayFile.reverse();
+  }
+  Reverse = !(Reverse);
+  Clear();
+  let Elem = document.getElementsByClassName("list-table")[0];
+  let ArrayItem = ArrayFloder.concat(ArrayFile);
+  for (let item in ArrayItem) {
+    let newChild = document.createElement("tr");
+    let iconHtml = "";
+    if (ArrayItem[item]['@type'] == 'folder') {
+      iconHtml = '<span class="icon-folder-open"> </span>';
+    } else if (ArrayItem[item]['@type'] == 'file') {
+      iconHtml = '<span class="icon-file-text2"> </span>';
+    } else { continue }
+    let ItemName = decodeURIComponent(ArrayItem[item]['name']),
+      Protocol = (document.location.protocol == 'https:') ? 'https:' : 'http:';
+    let href = Protocol + '//' + Domain + CurrentPath + '/' + ItemName;
+    let FileType = getFileType(ItemName);
+    newChild.setAttribute('class', 'item');
+    newChild.innerHTML = "<td class=\"file\">" + iconHtml + "<a href='//" + window.location.host + CurrentPath + "/" + ItemName + "'>" + ItemName + "</a></td><td class=\"updated_at\">" + ArrayItem[item]['date'] + "</td><td class=\"size\">" + ArrayItem[item]['size'] + "</td>";
+    Elem.lastChild.appendChild(newChild);
+    newChild.addEventListener('click', function (e) {
+      if (FileType === "video") {
+        let dplayerContainer = `
+    <tr id="dplayerTr"><td colspan="3">
+        <div id="dplayerContainer">
+          <div align="right">
+            <button type="button" id="closevideo" onclick="dpClose()"><span class="icon-cross"></span></button>
+          </div>
+          <div id="dplayer"></div>
+  </div></td></tr>`;
+        $$('#dplayerTr').remove();
+        $$(newChild).after(dplayerContainer);
+        dpOpen(href)
+      } else if (FileType === "image") {
+        let imgEle = `
+        <div id="imageBox" onclick="$$(this).remove()">
+          <div id="imageBoxContainer">
+            <img id="imageBoxImage" src="${href}">
+          </div>
+        </div>
+        `;
+        $$('#imageBox').remove();
+        $$(document.getElementsByClassName("list-wrapper")[0]).after(imgEle)
+      } else if (FileType === "music") {
+        let audioElem = `
+        <tr id="dplayerTr">
+          <td colspan="3">
+            <audio id="music-player" src="${href}" style=" width: 100%" controls autoplay>sorry，您的浏览器不支持播放音频。</audio>
+          </td>
+        </tr>
+        `;
+        $$('#dplayerTr').remove();
+        $$(newChild).after(audioElem);
+      } 
+      else if(FileType === "text" || FileType === "pdf") {
+      	let filesElem = `
+      	 <tr id="dplayerTr">
+          <td colspan="3">
+      	<iframe class="filename" src="${href}" width="100%" height="600" frameborder="1"></iframe>
+          </td>
+        </tr>`
+         $$('#dplayerTr').remove();
+         $$(newChild).after(filesElem);
+      } 
+      else {
+        window.location.href = href
+      }
+    }, false)
+  }
+}
+function getFileType(name) {
+  if (!name) return false;
+  let imgType = ['gif', 'jpeg', 'jpg', 'bmp', 'png'],
+    videoType = ['avi', 'wmv', 'mkv', 'mp4', 'mov', '3gp', 'flv', 'mpg', 'rmvb'],
+    textType = ['txt', 'pdf', 'css', 'js', 'text', 'doc', 'docx', 'ppt', 'xml'],
+    musicType = ['wav', 'acc', 'flac', 'ape', 'ogg', 'mp3'];
+  if (RegExp("\.(" + imgType.join("|") + ")$", "i").test(name.toLowerCase())) {
+    return 'image'
+  } else if (RegExp("\.(" + videoType.join("|") + ")$", "i").test(name.toLowerCase())) {
+    return 'video'
+  } else if (RegExp("\.(" + textType.join("|") + ")$", "i").test(name.toLowerCase())) {
+    return 'text'
+  } else if (RegExp("\.(" + musicType.join("|") + ")$", "i").test(name.toLowerCase())) {
+    return 'music'
+  } else {
+    return false
+  }
+}
+function dpClose() {
+  $$('#dplayerTr').remove();
+  if (dp) { dp.destroy() }
+}
+function dpOpen(link) {
+  $$('#dplayerContainer').show();
+  dp = new DPlayer({
+    container: document.getElementById('dplayer'),
+    autoplay: true,
+    video: {
+      url: link,
+    },
+  })
+}
+window.onload = function () { View("name"); }
+
+</script>
+</body>
+
+</html>
