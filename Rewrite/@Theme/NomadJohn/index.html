@@ -509,16 +509,6 @@ function View(Property) {
         $$('#dplayerTr').remove();
         $$(newChild).after(audioElem);
       } 
-      else if(FileType === "text" || FileType === "pdf") {
-      	let filesElem = `
-      	 <tr id="dplayerTr">
-          <td colspan="3">
-      	<iframe class="filename" src="${href}" width="100%" height="600" frameborder="1"></iframe>
-          </td>
-        </tr>`
-         $$('#dplayerTr').remove();
-         $$(newChild).after(filesElem);
-      } 
       else {
         window.location.href = href
       }
